@@ -1,0 +1,100 @@
+<!--{template common/header}-->
+<!--{template common/nav1}--> 
+<div style='padding:5px 0;'>
+<div class="l"  ><!--{ad/custom_3}--></div>
+<div class="r"><!--{ad/custom_4}--></div>
+</div>
+ 
+
+<div class="wpa">
+<div class="biaoqian">您当前的位置：<a href="/" class="baia">首页</a> &gt; <a href="/kf/" class="baia">开服表</a> &gt; <a href="wyyx-$frow[fid]-1.html"  >$frow[name]</a>&gt;  </div>
+ 
+<div class="ktit">{$krow[cname]}{$krow[name]}双线{$krow[server]}区{$krow[ktime]} {$krow[ktime2]}:00:00开服
+<span class='r'><a href="/kf/"   target="_blank">更多开服&gt;&gt;</a></span>
+</div>
+
+<div class="kbo">
+ <div class="game_jj_left">
+        <div class="game_tu"><a target="_blank" href="wyyx-{$frow[fid]}-1.html"><img src="http://img.aicunfu.com/uploads/common/$frow[icon]" width="220" height="140" alt='$frow[name]'></a></div>
+        <div class="game_xx">
+          <dl>
+            <dd><span class="hui">平台名称：</span><a href="space-uid-{$krow[uid]}.html" >{$krow[cname]}</a></dd>
+            <dd><span class="hui">游戏名称：</span>{$krow[name]}</dd>
+            <dd><span class="hui">游戏类型：</span>{$krow[typename]}</dd> 
+			<dd> </dd> 
+          </dl>
+          <div class="anniu_nei" style='padding-top:10px;'>
+          		<a   href="lb.php?tid=$post[tid]" id="lbb"  onclick="showWindow(this.id, this.href, 'get', 0);"><img src="/static/kflb.gif" width="90" height="29" border="0" alt='领取礼包'></a>
+				<a href="go-{$krow[tid]}.html" target="_blank"><img src="/static/kfjr.gif" width="90" height="29" border="0" alt='进入游戏'></a>
+		  </div>
+        </div>
+      </div>
+	  <div class="game_jj_right"> <strong>【游戏简介】</strong> <span class="hui2">$frow[description]</span> </div>
+</div>
+<div class="ktit2 clear">今日热门游戏开服<span class='r'><a href="/kf/"   target="_blank">更多开服&gt;&gt;</a></span></div>
+<div  class="l_kf" style='width:935px;' >
+<table cellpadding="0" cellspacing="0">
+<tbody>
+	<tr>
+		<th class="gamename">游戏名称</th>
+		<th class="kflx">种类</th>
+		<th class="kfsj">开服时间</th>
+		<th class="fwq">游戏类型</th>
+		<th class="fwq">服务器名</th>
+		<th class="fwq">进入游戏</th>
+		<th class="">礼包</th>
+		<th class="fwq">运营商</th>
+		<th class="fwq">状态</th>
+	</tr>
+	<!--{loop $kfnews $key $items}--> 
+	<tr {if $items[ktime2] ==date("H") && $items[ktime]==$jdate}style='background:#FDF7AE'{/if} class='k$items[ktime2]'	  {if $key%2==0}style='background:#CAE1EF'{else}style='background:#fff'{/if}>
+	        <td class='gamename'><div class="t1"><strong><a href="/kfview/t$items[tid]" target='_blank'>$items[name]</a></strong></div></td>
+			<td ><div class="t4">$items[gtype]网页游戏开服表 村服鬼服开服表 超高返利村服鬼服平台大全</div></td>
+			<td><!--{if $items[ktime2] <=date("H")&&$items[ktime]==$jdate}-->
+				 <font color="red">火爆开服中</font> 
+                <!--{elseif $items[ktime2] >date("H")&&$items[ktime]==$jdate}-->
+			     <em>{if $items[ktime2]<12}上午{elseif $items[ktime2]>=12&&$items[ktime2]<18}下午{else}晚上{/if}
+				 $items[ktime2]:00</em>
+            <!--{elseif $items[ktime]!=$jdate}-->
+			    <em><!--{eval echo substr($items[ktime],5);}--> $items[ktime2]:00</em>	
+			<!--{/if}-->			
+			</td>
+            <td>$items[tname]</td> 
+			<td>双线$items[server]区</td>
+			<td><a href="go-$items[tid].html" target='_blank'>{if $items[ktime2] ==date("H")&&$items[ktime]==date("Y-m-d")}<img src='static/jr_hong.png' alt='$items[name]'>{else}<img src='static/jryx.png' alt='$items[name]'>{/if}</a></td> 
+			 <td><div class="t1">
+			 {if $items[yhhd]}<a onclick="showWindow('lbb', this.href, 'get', 0);"   href="klb.php?tid=$items[tid]">$items[yhhd]</a>
+			 {else}<a href="/wyyx-67-1.html"  target="_blank">求号</a>{/if} 
+			 </div></td>
+			<td><div class="t2"><a href="space-uid-$items[uid].html" title="" target="_blank">$items[cname]</a></div></td> 
+			 <td><a href="go-$items[tid].html" target='_blank'>
+            <!--{if $items[ktime2] ==date("H")&&$items[ktime]==$jdate}--><font color="red">正在开服</font> 
+             <!--{elseif ($items[ktime2] >date("H")&&$items[ktime]==$jdate)||$items[ktime]>$jdate}--><em>即将开服</em>
+             <!--{else}--><em>已经开服</em><!--{/if}--></a></td>
+	</tr>
+  <!--{/loop}-->                          
+</tbody></table>
+</div>
+<div style="padding:0px">&nbsp;&nbsp;&nbsp;&nbsp; </div>
+<div class="ktit2 clear">$frow[name]全部运营平台 </div>
+<div class="kpt">
+<div  >
+<!--{loop $cnames  $item}--> 
+ <a href="kf/u$item[uid]/$frow[name]" title="" target="_blank">$item[cname]</a>
+   <!--{/loop}-->  
+   </div>
+</div>
+<div style="padding:0px">&nbsp;&nbsp;&nbsp;&nbsp; </div>
+<div class="ktit2 clear">$frow[name]游戏简介 </div>
+<div class="kjianjie">
+欢迎光临<a href="http://www.aicunfu.com" target="_blank">爱村服网页游戏开服表</a>、<a href="http://www.aicunfu.com/kf.php" target="_blank">村服鬼服开服表</a>、<a href="http://www.aicunfu.com/wyyx-{$frow[fid]}-1.html" target="_blank">$frow[name]开服表</a>，爱村服为您提供最全的鬼服村服平台每日最新鬼服村服开服表信息。
+    近年网页游戏市场风云变幻，就$frow[name]来说，已经从单一网页游戏{$frow[name]}官方、{$frow[name]}宇宙服等超大服转战成若干{$frow[name]}村服、$frow[name]鬼服、甚至出现仿{$frow[name]}官服。这就是市场的需求。因为{$frow[name]}官方宇宙服人满为患，人均资源分配不足，大R超R拼个你死我活，多败俱伤，花钱赌气！而{$frow[name]}鬼服{$frow[name]}村服更具有人性化，少花钱办大事，你那边做大王、我这边做盟主，各领风骚。市场由面分散成若干个点，因此诞生了多家村服鬼服平台中小型运营商，也就自然出现类似{$frow[name]}鬼服村服游戏。玩家对鬼服村服乐此不疲，因为它有着网页游戏变态官服般的速度与激情，而且很持久，这就是村服鬼服风靡页游界的重要因素。
+    {$krow[cname]}是一家服务周到细致，很实惠给力的页游平台，{$frow[name]}就是其旗下运营的一款{$ftype}类型的经典网页游戏，{$krow[ktime]} {$krow[ktime2]}:00:00开启双线{$krow[server]}服，并有优惠活动：{if $krow[yhhd]}{$krow[yhhd]}{else}村服鬼服开服表，平台礼多服务好{/if}。
+     爱村服还为您提供更多平台{$frow[name]}官服、{$frow[name]}村服、{$frow[name]}鬼服资讯、最新{$frow[name]}开服表、{$frow[name]} 开服礼包、{$frow[name]}独家大礼包，还有{$frow[name]}鬼服村服论坛可供玩家相互交流快速成长心得及{$frow[name]}副本攻略秘籍等！还在等什么？去点燃你等待已久的激情吧！
+	 <p>
+	 {$content['content']}
+	 </p>
+</div>
+
+</div>
+<!--{template common/footer}-->
